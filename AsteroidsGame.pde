@@ -1,47 +1,47 @@
 Star[] stars = new Star[100];
 Spaceship bob;
-asteroid dob;
+ArrayList<asteroid> asteroids;
+boolean shipAlive = true;
 
 public void setup() {
   size(300, 300);
-  for (int i = 0; i < stars.length; i++) {
-    stars[i] = new Star();
-  }
+  for (int i = 0; i < stars.length; i++) stars[i] = new Star();
   bob = new Spaceship();
-  dob = new asteroid();
+  asteroids = new ArrayList<asteroid>();
+  for (int i = 0; i < 10; i++) asteroids.add(new asteroid());
 }
 
 public void draw() {
   background(0);
-  for (int i = 0; i < stars.length; i++) {
-    stars[i].show();
+  for (Star s : stars) s.show();
+
+  for (asteroid a : asteroids) {
+    a.show();
+    a.move();
+    if (shipAlive && collide(bob, a)) shipAlive = false;
   }
-  dob.show();
-  dob.move();
-  bob.show();
-  bob.move();
+
+  if (shipAlive) {
+    bob.show();
+    bob.move();
+  }
 }
 
-public void keyPressed(){
- if (key == 'w') {
-   bob.accelerate(.1);
- }
- if (key == 'd'){
-  bob.turn(20);
- }
- if (key=='a'){
-   bob.turn(-20);
- }
- if (key == 't'){
-   bob.setX(300*(Math.random()));
-   bob.getX();
-   bob.setY(300*(Math.random()));
-   bob.getY();
-   bob.setSX(0);
-   bob.getSX();
-   bob.setSY(0);
-   bob.getSY();
-   bob.setDir(360*(Math.random()));
-   bob.getDir();
- }
+public void keyPressed() {
+  if (key == 'w') bob.accelerate(.1);
+  if (key == 'd') bob.turn(20);
+  if (key == 'a') bob.turn(-20);
+  if (key == 't') {
+    bob.myCenterX = Math.random() * width;
+    bob.myCenterY = Math.random() * height;
+    bob.myXspeed = 0;
+    bob.myYspeed = 0;
+    bob.myPointDirection = Math.random() * 360;
+  }
+}
+
+boolean collide(Floater a, Floater b) {
+  float dx = (float)(a.myCenterX - b.myCenterX);
+  float dy = (float)(a.myCenterY - b.myCenterY);
+  return sqrt(dx*dx + dy*dy) < 20;
 }
