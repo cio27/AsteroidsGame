@@ -1,6 +1,6 @@
 Star[] stars = new Star[100];
 Spaceship bob = new Spaceship();
-
+asteroid dob = new asteroid();
 public void setup() {
   size(300, 300);
 
@@ -14,7 +14,8 @@ public void draw() {
   for (int i = 0; i < stars.length; i++) {
     stars[i].show();
   }
-
+  dob.show();
+  dob.move();
   bob.show();
   bob.move();
 }
@@ -22,8 +23,11 @@ public void keyPressed(){
  if (key == 'w') {
    bob.accelerate(.1);
  }
- if (key == 'r'){
+ if (key == 'd'){
   bob.turn(20);
+ }
+ if (key=='a'){
+   bob.turn(-20);
  }
  if (key == 't'){
    bob.setX(300*(Math.random()));
@@ -37,4 +41,5 @@ public void keyPressed(){
    bob.setDir(360*(Math.random()));
    bob.getDir();
  }
+ 
 }
