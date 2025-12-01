@@ -22,12 +22,13 @@ class asteroid extends Floater
     yCorners[5] = 0;
 
     myColor = color(150);
-    myCenterX = random(width);
-    myCenterY = random(height);
-    myXspeed = random(-2, 2);
-    myYspeed = random(-2, 2);
-    myPointDirection = random(360);
-    rotSpeed = (int)random(-5, 6);
+
+    myCenterX = Math.random() * 300;
+    myCenterY = Math.random() * 300;
+    myXspeed = (Math.random() * 4) - 2;
+    myYspeed = (Math.random() * 4) - 2;
+    myPointDirection = Math.random() * 360;
+    rotSpeed = (int)(Math.random() * 11) - 5;
   }
 
   public void move()
@@ -38,4 +39,3 @@ class asteroid extends Floater
 
   public void setRot(int i){ rotSpeed = i; }
 }
-
