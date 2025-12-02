@@ -1,20 +1,20 @@
 Star[] stars = new Star[100];
 Spaceship bob;
-ArrayList<asteroid> asteroids;
+ArrayList<Asteroid> asteroids;
 boolean shipAlive = true;
- asteroids = new ArrayList<asteroid>();
+ asteroids = new ArrayList<Asteroid>();
 public void setup() {
   size(300, 300);
   for (int i = 0; i < stars.length; i++) stars[i] = new Star();
   bob = new Spaceship();
-  for (int i = 0; i < 10; i++) asteroids.add(new asteroid());
+  for (int i = 0; i < 10; i++) asteroids.add(new Asteroid());
 }
 
 public void draw() {
   background(0);
   for (Star s : stars) s.show();
 
-  for (asteroid a : asteroids) {
+  for (Asteroid a : asteroids) {
     a.show();
     a.move();
     if (shipAlive && collide(bob, a)) shipAlive = false;
