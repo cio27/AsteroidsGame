@@ -1,12 +1,12 @@
 Star[] stars = new Star[100];
 Spaceship bob = new Spaceship();
-ArrayList<asteroid> asteroids;
+ArrayList<Asteroid> asteroids;
 public void setup() {
   size(300, 300);
   for (int i = 0; i < stars.length; i++) stars[i] = new Star();
   bob = new Spaceship();
-  asteroids = new ArrayList<asteroid>();
-  for (int i = 0; i < 20; i++){ asteroids.add(new asteroid());}
+  asteroids = new ArrayList<Asteroid>();
+  for (int i = 0; i < 20; i++){ asteroids.add(new Asteroid());}
 }
 
 public void draw() {
