@@ -72,6 +72,4 @@ public void keyPressed(){
  if (key == 'e'){
    shot.add(new Bullet(bob));
  }
- 
-}
 }
