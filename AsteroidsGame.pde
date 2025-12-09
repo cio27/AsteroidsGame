@@ -1,13 +1,13 @@
 Star[] stars = new Star[100];
 Spaceship bob = new Spaceship();
-ArrayList<Asteroid> asteroids;
+ArrayList<asteroid> asteroids;
 ArrayList<Bullet> shot = new ArrayList<Bullet>();
 public void setup() {
   size(300, 300);
   for (int i = 0; i < stars.length; i++) stars[i] = new Star();
   bob = new Spaceship();
-  asteroids = new ArrayList<Asteroid>();
-  for (int i = 0; i < 20; i++){ asteroids.add(new Asteroid());}
+  asteroids = new ArrayList<asteroid>();
+  for (int i = 0; i < 20; i++){ asteroids.add(new asteroid());}
 }
 
 
@@ -72,4 +72,5 @@ public void keyPressed(){
  if (key == 'e'){
    shot.add(new Bullet(bob));
  }
+ 
 }
